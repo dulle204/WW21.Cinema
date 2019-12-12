@@ -16,6 +16,6 @@ namespace WinterWorkShop.Cinema.Data
 
         public double? Rating { get; set; }
 
-        public bool Current { get; set; }
+        public bool? Current { get; set; }
     }
 }
