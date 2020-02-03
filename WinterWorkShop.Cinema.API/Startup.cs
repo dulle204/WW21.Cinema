@@ -39,6 +39,7 @@ namespace WinterWorkShop.Cinema.API
             });
 
             // JWT token
+
             services.AddJwtBearerAuthentication(Configuration);
 
             services.AddControllers();
