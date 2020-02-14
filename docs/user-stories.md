@@ -69,6 +69,5 @@ Develop backend and frontend for this functionality.
 8.	**Performance improvment**
 
     Description: Change some complicated queries with views. Present all improvments.
-Develop backend.
 
 
