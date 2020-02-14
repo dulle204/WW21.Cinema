@@ -1,5 +1,7 @@
-User Stories:
-Must Do Functionalities:
+#User Stories:
+
+
+###Must Do Functionalities:
 1.	Ticket reservation
 Description: Client should be able to reserve ticket by clicking on desired seats. Client must pay in order to reserve a ticket and seat. 
 Develop backend and frontend for this functionality. If client reserves more than one seat, seats must be next to each other.
@@ -34,7 +36,8 @@ Description: Demo for application developed functionalities. Presenting which fu
 9.	Build – Release pipeline 
 Description: Investigate and present in your presentation this topic.
  
-Bonus functionalities:
+###Bonus functionalities:
+
 1.	Cinema Bonus Points (connected to must do task 1.)
 Description: Client should be able to collect bonus points for successful ticket purchase. (similar to bonus card point)
 Develop backend and frontend for this functionality.
