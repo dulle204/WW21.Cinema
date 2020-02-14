@@ -66,8 +66,9 @@ Develop this functionality in Client app.
 Description: Add route protection for super_user if that role is introduced.
 Develop backend and frontend for this functionality.
 
-8.	Include SQL Views
-Description: Change some complicated queries with views. 
+8.	**Performance improvment**
+
+    Description: Change some complicated queries with views. Present all improvments.
 Develop backend.
 
 
