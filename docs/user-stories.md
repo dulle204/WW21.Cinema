@@ -4,7 +4,7 @@
 ###Must Do Functionalities:
 1.	**Ticket Reservation**<br/>
 Description: Client (register user - confirmed user) should be able to reserve ticket by clicking on desired seats. When we select desired seat we proceed to payment.
-If payment is successful client have ticket and seat reserved.<br/>
+If payment is successful client have ticket and seat reserved. Application must display already reserved seats and mark them with difrente color from the available ones.<br/>
 Develop backend and frontend for this functionality. If client reserves more than one seat, seats must be next to each other.
 Corner Case: If we want to reserve two or more seats and we do not have them available in row one after another.
 Application should inform us that we can buy tickets separately or change projection time of specific movie. 
@@ -42,12 +42,13 @@ Description: Investigate and present in your presentation this topic.
 ###Bonus functionalities:
 
 1.	**Cinema Bonus Points** - (connected to must do task 1.)<br/>
-Description: Client (register user - confirmed user) should be able to collect bonus points for successful ticket purchase.
-For every successful ticket purchase, one bonus point is added for user (register user). All collected points should be visible on application.<br/>
+Description: Client (registered user - confirmed user) should be able to collect bonus points for successful ticket purchase.
+For every successful ticket purchase, one bonus point is added for current user (registered user - confirmed user). All collected points should be visible 
+on application "Profile page".<br/>
 Develop backend and frontend for this functionality.
 
 2.	**Movies Top List** - (connected to must do task 6.)<br/>
-Description: client (register user - confirmed user) should be able to see top list for specific year. 
+Description: client (registered user - confirmed user) should be able to see top list for specific year. 
 If there are more movies with same rating we can rate them further if some of them have Oscar.<br/>
 Develop backend and frontend for this functionality.
 
