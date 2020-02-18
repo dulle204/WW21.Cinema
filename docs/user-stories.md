@@ -3,7 +3,7 @@
 
 ##Must Do Functionalities:
 
-|User Storie|Description|
+|User Story|Description|
 |:----------------:|:----------------:|    
 |Ticket Reservation|Client (register user - confirmed user) should be able to reserve ticket by clicking on desired seats. When we select desired seat we proceed to payment. If payment is successful client have ticket and seat reserved. Application must display already reserved seats and mark them with difrente color from the available ones.<br/> If client reserves more than one seat, seats must be next to each other.<br/> Corner Case: If we want to reserve two or more eats and we do not have them available in row one after another. Application should inform us that we can buy tickets separately or change projection time of specific movie. Develop backend and frontend for this functionality.|
 |Activate/ Deactivate Movie|Client (administrator user – confirmed admin user) should be able to activate or deactivate movie(current field).<br/>Develop backend and frontend for this functionality. If movie have projections which are in future it can not be deactivated.|
