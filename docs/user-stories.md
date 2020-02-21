@@ -3,17 +3,17 @@
 
 ##Must Do Functionalities:
 
-|User Story|Description|
+|**User Story**|**Description**|
 |:----------------:|:----------------:|    
-|Ticket Reservation|Client (register user - confirmed user) should be able to reserve ticket by clicking on desired seats. When we select desired seat we proceed to payment. If payment is successful client have ticket and seat reserved. Application must display already reserved seats and mark them with difrente color from the available ones.<br/> If client reserves more than one seat, seats must be next to each other.<br/> Corner Case: If we want to reserve two or more eats and we do not have them available in row one after another. Application should inform us that we can buy tickets separately or change projection time of specific movie. Develop backend and frontend for this functionality.|
-|Activate/ Deactivate Movie|Client (administrator user – confirmed admin user) should be able to activate or deactivate movie(current field).<br/>Develop backend and frontend for this functionality. If movie have projections which are in future it can not be deactivated.|
-|Movie Search|Client (confirmed users) should be able to search for specific movie by filtering tags. Tags can be unlimited, like (Actor, Year, Title….)<br/>Develop backend and frontend for this functionality.|
-|Filter Projections|Client (confirmed users) should be able to filter by Cinema, Auditorium, Movie, Specific Time Span.<br/>Develop backend and frontend for this functionality.|
-|Unit Tests|Client (confirmed users) should be able to filter by Cinema, Auditorium, Movie, Specific Time Span.<br/>Develop backend and frontend for this functionality.|
-|Movie Top List|Client (confirmed users) should be able to see top 10 movie according to ratings.<br/>Develop backend and frontend for this functionality.|
-|Create Cinema|Client (administrator user – confirmed admin user) should be able to create new cinema.<br/>Develop backend and frontend for this functionality.|
-|Presenting Application|Demo for application developed functionalities. Presenting which functionalities are developed.|
-|Build – Release Pipeline|Investigate and present in your presentation this topic.|
+|**Ticket Reservation**|Client (register user - confirmed user) should be able to reserve ticket by clicking on desired seats. When we select desired seat we proceed to payment. If payment is successful client have ticket and seat reserved. Application must display already reserved seats and mark them with difrente color from the available ones.<br/> If client reserves more than one seat, seats must be next to each other.<br/> Corner Case: If we want to reserve two or more eats and we do not have them available in row one after another. Application should inform us that we can buy tickets separately or change projection time of specific movie. Develop backend and frontend for this functionality.|
+|**Activate/ Deactivate Movie**|Client (administrator user – confirmed admin user) should be able to activate or deactivate movie(current field).<br/>Develop backend and frontend for this functionality. If movie have projections which are in future it can not be deactivated.|
+|**Movie Search**|Client (confirmed users) should be able to search for specific movie by filtering tags. Tags can be unlimited, like (Actor, Year, Title….)<br/>Develop backend and frontend for this functionality.|
+|**Filter Projections**|Client (confirmed users) should be able to filter by Cinema, Auditorium, Movie, Specific Time Span. Search can be done both separately or it can be based on multiple parameters. You should not be able to pass Auditorium which is not part of selected Cinema.<br/>Develop backend and frontend for this functionality.|
+|**Unit Tests**| Cover controllers and services with unit tests.|
+|**Movie Top List**|Client (confirmed users) should be able to see top 10 movie according to ratings.<br/>Develop backend and frontend for this functionality.|
+|**Create Cinema**|Client (administrator user – confirmed admin user) should be able to create new cinema.<br/>Develop backend and frontend for this functionality.|
+|**Presenting Application**|Demo for application developed functionalities. Present which functionalities are developed.|
+|**Build – Release Pipeline**|Investigate and present in your presentation this topic.|
 
 ###Bonus functionalities:
 
@@ -33,7 +33,7 @@ Description: Client (administrator user – confirmed admin user) should be able
 Develop backend and frontend for this functionality.
 
 4.	**Delete Cinema**<br/>
-Description: Client (administrator user – confirmed admin user) should be able to delete cinema with all his auditoriums and seats.<br/>
+Description: Client (administrator user – confirmed admin user) should be able to delete cinema with all its auditoriums and seats.<br/>
 Develop backend and frontend for this functionality.
 
 5.	**Introduce New Role**<br/>
