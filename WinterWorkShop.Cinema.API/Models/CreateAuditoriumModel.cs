@@ -14,15 +14,15 @@ namespace WinterWorkShop.Cinema.API.Models
 
         [Required]
         [StringLength(50, ErrorMessage = Messages.AUDITORIUM_PROPERTIE_NAME_NOT_VALID)]
-        public string auditName { get; set; }
+        public string auditoriumName { get; set; }
 
         [Required]
         [Range(1,20, ErrorMessage = Messages.AUDITORIUM_PROPERTIE_SEATROWSNUMBER_NOT_VALID)]
-        public int seatRows { get; set; }
+        public int numberOfRows { get; set; }
 
         [Required]
         [Range(1, 20, ErrorMessage = Messages.AUDITORIUM_PROPERTIE_SEATNUMBER_NOT_VALID)]
-        public int numberOfSeats { get; set; }
+        public int numberOfSeatsPerRow { get; set; }
 
     }
 }

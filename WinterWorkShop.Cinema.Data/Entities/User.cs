@@ -19,5 +19,7 @@ namespace WinterWorkShop.Cinema.Data
 
         [Column("isAdmin")]
         public bool IsAdmin { get; set; }
+
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

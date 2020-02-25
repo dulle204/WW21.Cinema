@@ -52,6 +52,7 @@ namespace WinterWorkShop.Cinema.API
             services.AddTransient<ICinemasRepository, CinemasRepository>();
             services.AddTransient<ISeatsRepository, SeatsRepository>();
             services.AddTransient<IUsersRepository, UsersRepository>();
+            services.AddTransient<IReservationsRepository, ReservationsRepository>();
 
             // Business Logic
             services.AddTransient<IMovieService, MovieService>();
@@ -60,6 +61,7 @@ namespace WinterWorkShop.Cinema.API
             services.AddTransient<ICinemaService, CinemaService>();
             services.AddTransient<ISeatService, SeatService>();
             services.AddTransient<IUserService, UserService>();
+            services.AddTransient<IReservationService, ReservationService>();
             services.AddTransient<ILevi9PaymentService, Levi9PaymentService>();
 
             // Allow Cors for client app

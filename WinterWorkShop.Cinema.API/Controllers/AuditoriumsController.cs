@@ -63,14 +63,14 @@ namespace WinterWorkShop.Cinema.API.Controllers
             AuditoriumDomainModel auditoriumDomainModel = new AuditoriumDomainModel
             {
                 CinemaId = createAuditoriumModel.cinemaId,
-                Name = createAuditoriumModel.auditName
+                Name = createAuditoriumModel.auditoriumName
             };
 
             CreateAuditoriumResultModel createAuditoriumResultModel;
 
             try 
             {
-                createAuditoriumResultModel = await _auditoriumService.CreateAuditorium(auditoriumDomainModel, createAuditoriumModel.numberOfSeats, createAuditoriumModel.seatRows);
+                createAuditoriumResultModel = await _auditoriumService.CreateAuditorium(auditoriumDomainModel, createAuditoriumModel.numberOfRows, createAuditoriumModel.numberOfSeatsPerRow);
             }
             catch (DbUpdateException e)
             {

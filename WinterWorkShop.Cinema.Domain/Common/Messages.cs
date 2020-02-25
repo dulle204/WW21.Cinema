@@ -2,6 +2,17 @@
 {
     public static class Messages
     {
+        #region Reservation
+        public const string RESERVATION_CREATION_ERROR = "Connection error, occured while creating new reservation, please try again.";
+        public const string RESERVATION_CREATION_USERID_ERROR = "Error occured while creating new reservation, userId not valid.";
+        public const string RESERVATION_CREATION_PROJECTIONID_ERROR = "Error occured while creating new reservation, projectionId not valid.";
+        public const string RESERVATION_CREATION_SEATID_ERROR = "Error occured while creating new reservation, seatId not valid.";
+        public const string RESERVATION_USERID_ERROR = "Error occured, userId missing.";
+        public const string RESERVATION_PROJECTIONID_ERROR = "Error occured, projectionId missing.";
+        public const string RESERVATION_SEATID_ERROR = "Error occured, seatId missing.";
+        public const string RESERVATION_PAYMENT_ERROR = "Error occured, payment missing.";
+        public const string RESERVATION_MESSAGE_ERROR = "Error occured, message missing.";
+        #endregion
         #region Users
 
         #endregion
