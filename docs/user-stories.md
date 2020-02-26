@@ -15,40 +15,15 @@
 |**Presenting Application**|Demo for application developed functionalities. Present which functionalities are developed.|
 |**Build – Release Pipeline**|Investigate and present in your presentation this topic.|
 
-###Bonus functionalities:
+##Bonus functionalities:
 
-1.	**Cinema Bonus Points** - (connected to must do task 1.)<br/>
-Description: Client (registered user - confirmed user) should be able to collect bonus points for successful ticket purchase.
-For every successful ticket purchase, one bonus point is added for current user (registered user - confirmed user). All collected points should be visible 
-on application "Profile page".<br/>
-Develop backend and frontend for this functionality.
-
-2.	**Movies Top List** - (connected to must do task 6.)<br/>
-Description: client (registered user - confirmed user) should be able to see top list for specific year. 
-If there are more movies with same rating we can rate them further if some of them have Oscar.<br/>
-Develop backend and frontend for this functionality.
-
-3.	**Create Cinema** - (connected to must do task 7.)<br/>
-Description: Client (administrator user – confirmed admin user) should be able to create through creation of cinema also auditorium with seats.<br/>
-Develop backend and frontend for this functionality.
-
-4.	**Delete Cinema**<br/>
-Description: Client (administrator user – confirmed admin user) should be able to delete cinema with all its auditoriums and seats.<br/>
-Develop backend and frontend for this functionality.
-
-5.	**Introduce New Role**<br/>
-Description: Client should be able to log as different type of users. For example: admin, super_user, user.<br/>
-Develop backend and frontend for this functionality.
-
-6.	**Refactoring Client App**<br/>
-Description: Try to move, post, get, put and delete to single file and export them as functions. <br/>
-Develop this functionality in Client app.
-
-7.	**Add Route For New User Roles**<br/>
-Description: Add route protection for new user role.<br/>
-Develop backend and frontend for this functionality.
-
-8.	**Performance Improvment**<br/>
-
-    Description: Change some complicated queries with views. Present all improvments.<br/>
-
+|**User Story**|**Description**|
+|:----------------:|:----------------:|
+|**Cinema Bonus Points** - (connected to must do task 1.)| Client (registered user - confirmed user) should be able to collect bonus points for successful ticket purchase. For every successful ticket purchase, one bonus point is added for current user (registered user - confirmed user). All collected points should be visible on application "Profile page".<br/>Develop backend and frontend for this functionality.|
+|**Movies Top List** - (connected to must do task 6.)|client (registered user - confirmed user) should be able to see top list for specific year. If there are more movies with same rating we can rate them further if some of them have Oscar.<br/>Develop backend and frontend for this functionality.|
+|**Create Cinema** - (connected to must do task 7.)|Client (administrator user – confirmed admin user) should be able to create through creation of cinema also auditorium with seats.<br/>Develop backend and frontend for this functionality.|
+|**Delete Cinema**|Client (administrator user – confirmed admin user) should be able to delete cinema with all its auditoriums and seats.<br/>Develop backend and frontend for this functionality.|
+|**Introduce New Role**|Client should be able to log as different type of users. For example: admin, super_user, user.<br/>Develop backend and frontend for this functionality.|
+|**Refactoring Client App**|Try to move, post, get, put and delete to single file and export them as functions. <br/>Develop this functionality in Client app.|
+|**Add Route For New User Roles**|Add route protection for new user role.<br/>Develop backend and frontend for this functionality.|
+|**Performance Improvment**|Change some complicated queries with views. Present all improvments.|
