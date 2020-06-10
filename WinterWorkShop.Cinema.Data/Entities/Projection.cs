@@ -21,5 +21,7 @@ namespace WinterWorkShop.Cinema.Data
         public virtual Movie Movie { get; set; }
 
         public virtual Auditorium Auditorium { get; set; }
+
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

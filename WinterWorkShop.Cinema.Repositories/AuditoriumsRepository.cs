@@ -12,6 +12,8 @@ namespace WinterWorkShop.Cinema.Repositories
     public interface IAuditoriumsRepository : IRepository<Auditorium> 
     {
         Task<IEnumerable<Auditorium>> GetByAuditName(string name, int id);
+        Task<IEnumerable<Auditorium>> DeleteByCinemaId(int cinemaId);
+        Task<IEnumerable<Auditorium>> GetByCinemaId(int cinemaId);
     }
     public class AuditoriumsRepository : IAuditoriumsRepository
     {
@@ -38,16 +40,30 @@ namespace WinterWorkShop.Cinema.Repositories
             return result.Entity;
         }
 
+        public async Task<IEnumerable<Auditorium>> DeleteByCinemaId(int cinemaId)
+        {
+            IEnumerable<Auditorium> existing = _cinemaContext.Auditoriums.Where(x => x.CinemaId == cinemaId);
+            List<Auditorium> result = new List<Auditorium>();
+            foreach (Auditorium auditorium in existing)
+            {
+                var data = _cinemaContext.Remove(auditorium);
+                result.Add(data.Entity);
+            }
+
+            return result;
+        }
+
         public async Task<IEnumerable<Auditorium>> GetAll()
         {
-            var data = await _cinemaContext.Auditoriums.ToListAsync();
+            var data = await _cinemaContext.Auditoriums.Include(x => x.Seats).ToListAsync();
 
             return data;
         }
 
         public async Task<Auditorium> GetByIdAsync(object id)
         {
-            return await _cinemaContext.Auditoriums.FindAsync(id);
+            var data = await _cinemaContext.Auditoriums.Include(x => x.Seats).Where(x => x.Id == (int)id).FirstAsync();
+            return data;
         }
 
         public Auditorium Insert(Auditorium obj)
@@ -68,6 +84,12 @@ namespace WinterWorkShop.Cinema.Repositories
             _cinemaContext.Entry(obj).State = EntityState.Modified;
 
             return updatedEntry.Entity;
+        }
+
+        public async Task<IEnumerable<Auditorium>> GetByCinemaId(int cinemaId)
+        {
+            var result = _cinemaContext.Auditoriums.Where(x => x.CinemaId == cinemaId);
+            return result;
         }
     }
 }

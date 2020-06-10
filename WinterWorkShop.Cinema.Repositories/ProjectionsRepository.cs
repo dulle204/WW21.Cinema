@@ -11,7 +11,12 @@ namespace WinterWorkShop.Cinema.Repositories
 {
     public interface IProjectionsRepository : IRepository<Projection> 
     {
-        IEnumerable<Projection> GetByAuditoriumId(int salaId);        
+        IEnumerable<Projection> GetByAuditoriumId(int auditoriumId);
+        IEnumerable<Projection> GetByMovieId(Guid movieId);
+        Task<IEnumerable<Projection>> DeleteByAuditoriumId(int auditoriumId);
+        Task<IEnumerable<Projection>> DeleteByMovieId(Guid movieId);
+        Task<IEnumerable<Projection>> DeleteByAuditoriumIdMovieId(int auditoriumId, Guid movieId);
+        IEnumerable<Projection> GetByAuditoriumIdMovieId(int auditoriumId, Guid movieId);
     }
 
     public class ProjectionsRepository : IProjectionsRepository
@@ -31,6 +36,7 @@ namespace WinterWorkShop.Cinema.Repositories
             return result;
         }
 
+
         public async Task<IEnumerable<Projection>> GetAll()
         {
             var data = await _cinemaContext.Projections.Include(x => x.Movie).Include(x => x.Auditorium).ToListAsync();
@@ -40,14 +46,60 @@ namespace WinterWorkShop.Cinema.Repositories
 
         public async Task<Projection> GetByIdAsync(object id)
         {
-            return await _cinemaContext.Projections.FindAsync(id);
+             return await _cinemaContext.Projections.FindAsync(id);
         }
 
         public IEnumerable<Projection> GetByAuditoriumId(int auditoriumId)
         {
-            var projectionsData = _cinemaContext.Projections.Where(x => x.AuditoriumId == auditoriumId);
+            var projectionsData = _cinemaContext.Projections.Where(x => x.AuditoriumId == auditoriumId).Include(x => x.Auditorium).Include(x => x.Movie);
 
             return projectionsData;
+        }
+
+        public IEnumerable<Projection> GetByAuditoriumIdMovieId(int auditoriumId, Guid movieId)
+        {
+            var projectionsData = _cinemaContext.Projections.Where(x => x.AuditoriumId == auditoriumId && x.MovieId == movieId).Include(x => x.Movie);
+
+            return projectionsData;
+        }
+
+        public async Task<IEnumerable<Projection>> DeleteByAuditoriumId(int auditoriumId)
+        {
+            IEnumerable<Projection> projectionList = _cinemaContext.Projections.Where(x => x.AuditoriumId == auditoriumId);
+            List<Projection> result = new List<Projection>();
+            foreach (Projection projection in projectionList)
+            {
+                var data = _cinemaContext.Remove(projection);
+                result.Add(data.Entity);
+            }
+
+            return result;
+        }
+
+        public async Task<IEnumerable<Projection>> DeleteByAuditoriumIdMovieId(int auditoriumId, Guid movieId)
+        {
+            IEnumerable<Projection> projectionList = _cinemaContext.Projections.Where(x => x.AuditoriumId == auditoriumId && x.MovieId == movieId);
+            List<Projection> result = new List<Projection>();
+            foreach (Projection projection in projectionList)
+            {
+                var data = _cinemaContext.Remove(projection);
+                result.Add(data.Entity);
+            }
+
+            return result;
+        }
+
+        public async Task<IEnumerable<Projection>> DeleteByMovieId(Guid movieId)
+        {
+            IEnumerable<Projection> projectionList = _cinemaContext.Projections.Where(x => x.MovieId == movieId);
+            List<Projection> result = new List<Projection>();
+            foreach (Projection projection in projectionList)
+            {
+                var data = _cinemaContext.Remove(projection);
+                result.Add(data.Entity);
+            }
+
+            return result;
         }
 
         public Projection Insert(Projection obj)
@@ -68,6 +120,13 @@ namespace WinterWorkShop.Cinema.Repositories
             _cinemaContext.Entry(obj).State = EntityState.Modified;
 
             return updatedEntry;
+        }
+
+        public IEnumerable<Projection> GetByMovieId(Guid movieId)
+        {
+            var projectionsData = _cinemaContext.Projections.Where(x => x.MovieId == movieId).Include(x => x.Auditorium);
+
+            return projectionsData;
         }
     }
 }

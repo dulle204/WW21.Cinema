@@ -12,16 +12,34 @@ namespace WinterWorkShop.Cinema.API.TokenServiceExtensions
     public static class JwtTokenGenerator
     {
         // WARNING: This is just for demo purpose
-        public static string Generate(string name, bool isAdmin, string issuer, string key)
+        public static string Generate(string name, bool isAdmin, bool isSuperUser, bool isUser, bool isGuest, string issuer, string key)
         {
             var claims = new List<Claim>
             {
                 new Claim(JwtRegisteredClaimNames.Sub, name),
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            if(isUser)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "user"));
+
+            }
+
             if (isAdmin)
             {
                 claims.Add(new Claim(ClaimTypes.Role, "admin"));
+            }
+
+            if(isSuperUser)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "superUser"));
+            }
+
+            if (isGuest)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, "guest"));
+
             }
 
             var securityKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(key));
@@ -31,7 +49,7 @@ namespace WinterWorkShop.Cinema.API.TokenServiceExtensions
                 issuer,
                 issuer,
                 claims,
-                expires: DateTime.Now.AddDays(1),
+                expires: DateTime.Now.AddHours(1),
                 signingCredentials: credentials);
 
             return new JwtSecurityTokenHandler().WriteToken(token);

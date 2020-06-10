@@ -18,6 +18,8 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
     public class ProjectionsControllerTests
     {
         private Mock<IProjectionService> _projectionService;
+        private Mock<IMovieService> _movieService;
+        private Mock<IAuditoriumService> _auditoriumService;
 
 
         [TestMethod]
@@ -28,7 +30,7 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
             ProjectionDomainModel projectionDomainModel = new ProjectionDomainModel
             {
                 Id = Guid.NewGuid(),
-                AditoriumName = "ImeSale",
+                AuditoriumName = "ImeSale",
                 AuditoriumId = 1,
                 MovieId = Guid.NewGuid(),
                 MovieTitle = "ImeFilma",
@@ -41,8 +43,10 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
             int expectedStatusCode = 200;
 
             _projectionService = new Mock<IProjectionService>();
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
             _projectionService.Setup(x => x.GetAllAsync()).Returns(responseTask);
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object,_movieService.Object,_auditoriumService.Object);
 
             //Act
             var result = projectionsController.GetAsync().ConfigureAwait(false).GetAwaiter().GetResult().Result;
@@ -67,8 +71,10 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
             int expectedStatusCode = 200;
 
             _projectionService = new Mock<IProjectionService>();
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
             _projectionService.Setup(x => x.GetAllAsync()).Returns(responseTask);
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object, _movieService.Object, _auditoriumService.Object);
 
             //Act
             var result = projectionsController.GetAsync().ConfigureAwait(false).GetAwaiter().GetResult().Result;
@@ -88,7 +94,7 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
         // if (!createProjectionResultModel.IsSuccessful) - false
         // return Created
         [TestMethod]
-        public void PostAsync_Create_createProjectionResultModel_IsSuccessful_True_Projection() 
+        public void PostAsync_Create_createProjectionResultModel_IsSuccessful_True_Projection()
         {
             //Arrange
             int expectedStatusCode = 201;
@@ -104,7 +110,7 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
                 Projection = new ProjectionDomainModel
                 {
                     Id = Guid.NewGuid(),
-                    AditoriumName = "ImeSale",
+                    AuditoriumName = "ImeSale",
                     AuditoriumId = createProjectionModel.AuditoriumId,
                     MovieId = createProjectionModel.MovieId,
                     MovieTitle = "ImeFilma",
@@ -116,8 +122,10 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
 
 
             _projectionService = new Mock<IProjectionService>();
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
             _projectionService.Setup(x => x.CreateProjection(It.IsAny<ProjectionDomainModel>())).Returns(responseTask);
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object, _movieService.Object, _auditoriumService.Object);
 
             //Act
             var result = projectionsController.PostAsync(createProjectionModel).ConfigureAwait(false).GetAwaiter().GetResult().Result;
@@ -153,7 +161,7 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
                 Projection = new ProjectionDomainModel
                 {
                     Id = Guid.NewGuid(),
-                    AditoriumName = "ImeSale",
+                    AuditoriumName = "ImeSale",
                     AuditoriumId = createProjectionModel.AuditoriumId,
                     MovieId = createProjectionModel.MovieId,
                     MovieTitle = "ImeFilma",
@@ -166,8 +174,10 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
             DbUpdateException dbUpdateException = new DbUpdateException("Error.", exception);
 
             _projectionService = new Mock<IProjectionService>();
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
             _projectionService.Setup(x => x.CreateProjection(It.IsAny<ProjectionDomainModel>())).Throws(dbUpdateException);
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object, _movieService.Object, _auditoriumService.Object);
 
             //Act
             var result = projectionsController.PostAsync(createProjectionModel).ConfigureAwait(false).GetAwaiter().GetResult().Result;
@@ -206,7 +216,7 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
                 Projection = new ProjectionDomainModel
                 {
                     Id = Guid.NewGuid(),
-                    AditoriumName = "ImeSale",
+                    AuditoriumName = "ImeSale",
                     AuditoriumId = createProjectionModel.AuditoriumId,
                     MovieId = createProjectionModel.MovieId,
                     MovieTitle = "ImeFilma",
@@ -219,8 +229,10 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
 
 
             _projectionService = new Mock<IProjectionService>();
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
             _projectionService.Setup(x => x.CreateProjection(It.IsAny<ProjectionDomainModel>())).Returns(responseTask);
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object, _movieService.Object, _auditoriumService.Object);
 
             //Act
             var result = projectionsController.PostAsync(createProjectionModel).ConfigureAwait(false).GetAwaiter().GetResult().Result;
@@ -252,8 +264,10 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
             };
 
             _projectionService = new Mock<IProjectionService>();
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
-            projectionsController.ModelState.AddModelError("key","Invalid Model State");
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object, _movieService.Object, _auditoriumService.Object);
+            projectionsController.ModelState.AddModelError("key", "Invalid Model State");
 
             //Act
             var result = projectionsController.PostAsync(createProjectionModel).ConfigureAwait(false).GetAwaiter().GetResult().Result;
@@ -287,7 +301,9 @@ namespace WinterWorkShop.Cinema.Tests.Controllers
             };
 
             _projectionService = new Mock<IProjectionService>();
-            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object);
+            _movieService = new Mock<IMovieService>();
+            _auditoriumService = new Mock<IAuditoriumService>();
+            ProjectionsController projectionsController = new ProjectionsController(_projectionService.Object, _movieService.Object, _auditoriumService.Object);
 
             //Act
             var result = projectionsController.PostAsync(createProjectionModel).ConfigureAwait(false).GetAwaiter().GetResult().Result;

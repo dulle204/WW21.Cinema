@@ -12,10 +12,15 @@ namespace WinterWorkShop.Cinema.Domain.Models
 
         public string MovieTitle { get; set; }
 
+        public int MovieYear { get; set; }
+
+        public double? MovieRating { get; set; }
+
         public int AuditoriumId { get; set; }
 
-        public string AditoriumName { get; set; }
+        public string AuditoriumName { get; set; }
 
         public DateTime ProjectionTime { get; set; }
+
     }
 }

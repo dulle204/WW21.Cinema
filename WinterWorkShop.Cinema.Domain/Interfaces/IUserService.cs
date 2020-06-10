@@ -27,5 +27,13 @@ namespace WinterWorkShop.Cinema.Domain.Interfaces
         /// <param name="username"></param>
         /// <returns>User</returns>
         Task<UserDomainModel> GetUserByUserName(string username);
+
+        Task<UserDomainModel> DeleteUserById(Guid userId);
+
+        Task<UserDomainModel> AddUser(UserDomainModel newUser);
+
+        public int AddBonusPointsByUserId(Guid userId, int bonusPoints);
+
+        Task<UserDomainModel> UpdateUser(UserDomainModel updateUser);
     }
 }

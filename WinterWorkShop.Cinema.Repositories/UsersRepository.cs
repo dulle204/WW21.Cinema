@@ -11,6 +11,7 @@ namespace WinterWorkShop.Cinema.Repositories
     public interface IUsersRepository : IRepository<User> 
     {
         User GetByUserName(string username);
+        public int AddBonusPointsByUserId(Guid UserId, int bonusPoints);
     }
     public class UsersRepository : IUsersRepository
     {
@@ -25,6 +26,7 @@ namespace WinterWorkShop.Cinema.Repositories
         {
             User existing = _cinemaContext.Users.Find(id);
             var result = _cinemaContext.Users.Remove(existing).Entity;
+            _cinemaContext.SaveChanges();
 
             return result;
         }
@@ -43,7 +45,7 @@ namespace WinterWorkShop.Cinema.Repositories
 
         public User GetByUserName(string username)
         {
-            var data = _cinemaContext.Users.SingleOrDefault(x => x.UserName == username);
+            var data = _cinemaContext.Users.Where(x => x.UserName == username).FirstOrDefault();
 
             return data;
         }
@@ -64,6 +66,14 @@ namespace WinterWorkShop.Cinema.Repositories
             _cinemaContext.Entry(obj).State = EntityState.Modified;
 
             return updatedEntry;
+        }
+
+        public int AddBonusPointsByUserId(Guid UserId, int bonusPoints)
+        {
+            var userToUpdate = _cinemaContext.Users.Where(x => x.Id == UserId).First();
+            userToUpdate.BonusPoints += bonusPoints ;
+            _cinemaContext.Entry(userToUpdate).State = EntityState.Modified;
+            return userToUpdate.BonusPoints;
         }
     }
 }

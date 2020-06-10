@@ -2,13 +2,17 @@
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using WinterWorkShop.Cinema.Data;
 
 namespace WinterWorkShop.Cinema.Repositories
 {
-    public interface ICinemasRepository : IRepository<Data.Cinema> { }
+    public interface ICinemasRepository : IRepository<Data.Cinema> 
+    {
+        Task<IEnumerable<Data.Cinema>> GetByCinemaName(string name);
+    }
 
     public class CinemasRepository : ICinemasRepository
     {
@@ -37,6 +41,13 @@ namespace WinterWorkShop.Cinema.Repositories
         public async Task<Data.Cinema> GetByIdAsync(object id)
         {
             var data = await _cinemaContext.Cinemas.FindAsync(id);
+
+            return data;
+        }
+
+        public async Task<IEnumerable<Data.Cinema>> GetByCinemaName(string name)
+        {
+            var data = await _cinemaContext.Cinemas.Where(x => x.Name == name).ToListAsync();
 
             return data;
         }

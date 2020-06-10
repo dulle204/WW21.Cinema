@@ -19,5 +19,16 @@ namespace WinterWorkShop.Cinema.Data
 
         [Column("isAdmin")]
         public bool IsAdmin { get; set; }
+
+        [Column("isSuperUser")]
+        public bool IsSuperUser { get; set; }
+
+        [Column("isUser")]
+        public bool IsUser { get; set; }
+
+        [Column("bonusPoints")]
+        public int BonusPoints { get; set; }
+
+        public virtual ICollection<Reservation> Reservations { get; set; }
     }
 }

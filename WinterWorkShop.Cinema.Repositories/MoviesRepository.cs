@@ -12,6 +12,9 @@ namespace WinterWorkShop.Cinema.Repositories
     public interface IMoviesRepository : IRepository<Movie> 
     {
         IEnumerable<Movie> GetCurrentMovies();
+        IEnumerable<Movie> GetTopTenMoviesByRating();
+
+        IEnumerable<Movie> GetMoviesByYear(int year);
     }
 
     public class MoviesRepository : IMoviesRepository
@@ -39,7 +42,8 @@ namespace WinterWorkShop.Cinema.Repositories
 
         public async Task<IEnumerable<Movie>> GetAll()
         {
-            return await _cinemaContext.Movies.ToListAsync();
+            var data = await _cinemaContext.Movies.ToListAsync();
+            return data;
         }
 
         public async Task<Movie> GetByIdAsync(object id)
@@ -52,7 +56,26 @@ namespace WinterWorkShop.Cinema.Repositories
         public IEnumerable<Movie> GetCurrentMovies()
         {
             var data = _cinemaContext.Movies
-                .Where(x => x.Current);            
+                .Where(x => x.Current)
+                .Include(x => x.Projections)
+                .ToList();
+
+            return data;
+        }
+
+        public IEnumerable<Movie> GetMoviesByYear(int year)
+        {
+            var data = _cinemaContext.Movies.Where(x => x.Year == year).Where(x => x.Current == true).OrderByDescending(x => x.Rating).Take(10).ToList();
+
+            return data;
+        }
+
+        public IEnumerable<Movie> GetTopTenMoviesByRating()
+        {
+            var data = _cinemaContext.Movies
+                .Where(x => x.Current)
+                .OrderByDescending(x => x.Rating)
+                .Take(10);
 
             return data;
         }
