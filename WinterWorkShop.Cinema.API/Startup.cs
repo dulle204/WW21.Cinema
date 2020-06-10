@@ -70,9 +70,10 @@ namespace WinterWorkShop.Cinema.API
             services.AddTransient<IMovieTagService, MovieTagService>();
 
             // Allow Cors for client app
+
             services.AddCors(options => {
                 options.AddPolicy("CorsPolicy",
-                    corsBuilder => corsBuilder.WithOrigins("http://localhost:3000")
+                    corsBuilder => corsBuilder.WithOrigins("https://cinema9.azurewebsites.net")
                         .AllowAnyMethod()
                         .AllowAnyHeader()
                         .AllowCredentials());
